@@ -8,9 +8,11 @@
 #   .github/scripts/build-tools.sh [all|mvcc|cumetal]
 #
 # $CUPORT_TOOLS defaults to ~/.local/cuport-tools. A tool whose install is
-# already at the pinned commit is skipped, so a restored CI cache costs
-# nothing. Needs Homebrew, and full Xcode (or the Metal Toolchain component)
-# for CuMetal's `xcrun metal`.
+# already at the pinned commit, and still starts, is not rebuilt, so a restored
+# CI cache costs little. Its Homebrew dependencies are installed either way:
+# the cache holds only $CUPORT_TOOLS, and both tools load Homebrew LLVM, z3
+# and zstd at run time. Needs Homebrew, and full Xcode (or the Metal
+# Toolchain component) for CuMetal's `xcrun metal`.
 set -euo pipefail
 
 want=${1:-all}
@@ -51,11 +53,11 @@ build_mvcc() {
   local version commit prefix src
   version=$(pin mvcc version); commit=$(pin mvcc commit)
   prefix="$TOOLS/mvcc-$version"; src="$TOOLS/src/mvcc"
-  if stamp_ok "$prefix" "$commit" && [ -x "$prefix/bin/nvcc" ]; then
+  brew install --quiet llvm z3 zstd cmake ninja rust
+  if stamp_ok "$prefix" "$commit" && "$prefix/bin/nvcc" --version >/dev/null 2>&1; then
     echo "mvcc $version already built at $commit"; return
   fi
   echo "== mvcc $version ($commit)"
-  brew install --quiet llvm z3 zstd cmake ninja rust
   checkout "$(pin mvcc repo)" "$src" "$commit"
   cd "$src"  # install_toolkit.sh runs cargo in the current directory
   LLVM_DIR="$(brew --prefix llvm)/lib/cmake/llvm" \
@@ -77,11 +79,11 @@ build_cumetal() {
     xcodebuild -downloadComponent MetalToolchain
   fi
   xcrun --find metal && xcrun --find metallib
-  if stamp_ok "$prefix" "$commit" && [ -x "$prefix/bin/cumetalc" ]; then
+  brew install --quiet llvm lz4 zstd cmake
+  if stamp_ok "$prefix" "$commit" && "$prefix/bin/cumetalc" --version >/dev/null 2>&1; then
     echo "cumetal $version already built at $commit"; return
   fi
   echo "== cumetal $version ($commit)"
-  brew install --quiet llvm lz4 zstd cmake
   checkout "$(pin cumetal repo)" "$src" "$commit"
   cmake -S "$src" -B "$src/build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$prefix" \
     -DCUMETAL_BUILD_TESTS=OFF -DCUMETAL_ENABLE_BINARY_SHIM=OFF \
@@ -90,7 +92,7 @@ build_cumetal() {
   rm -rf "$prefix"
   cmake --install "$src/build"
   echo "$commit" > "$prefix/.cuport-commit"
-  "$prefix/bin/cumetal" version || true
+  "$prefix/bin/cumetalc" --version
 }
 
 # For `all`, build each tool in its own process (set -e is ignored inside an
