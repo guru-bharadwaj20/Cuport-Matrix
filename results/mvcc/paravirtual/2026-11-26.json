@@ -1,0 +1,451 @@
+{
+  "schema": 1,
+  "tool": {
+    "id": "mvcc",
+    "version": "v1.3.0",
+    "commit": "8a814c20138132e758c0b9475dc91283ee7183b1"
+  },
+  "hardware": {
+    "id": "paravirtual",
+    "macos": "27.0.1 (26A434)",
+    "profiler": "Metal device: Apple Paravirtual device"
+  },
+  "date": "2026-11-26",
+  "runner": {
+    "command": "python -m cuport run --tool mvcc --hardware paravirtual --jobs 3 --gpu-jobs 2 --force",
+    "duration_s": 2.3,
+    "config": {
+      "jobs": 3,
+      "gpu_jobs": 2,
+      "probe_filter": [],
+      "probes": 42,
+      "seed": "per probe: x0 = FNV-1a 64 of the probe id; LCG and draw rule in matrix/schema.md",
+      "python": "3.13.17",
+      "tool_detail": "Build mvcc_1.3.0_0",
+      "repo_commit": "42c51697baede0ae6461b99b3853e3a03aae277a",
+      "repo_dirty": false
+    }
+  },
+  "cells": [
+    {
+      "feature": "atomics.atomic_64bit",
+      "probe": "atomics/atomic-64bit-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "atomics.atomicAdd_int_float",
+      "probe": "atomics/atomic-add-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "atomics.atomicCAS_loop",
+      "probe": "atomics/cas-loop-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "atomics.atomicMin_Max_unsigned",
+      "probe": "atomics/min-max-unsigned-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "atomics.shared_atomic_contention",
+      "probe": "atomics/shared-contention-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "device-services.device_assert",
+      "probe": "device-services/assert-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "device-services.clock64_monotonic",
+      "probe": "device-services/clock64-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "device-services.device_malloc_free",
+      "probe": "device-services/malloc-free-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "device-services.device_printf",
+      "probe": "device-services/printf-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.denormal_handling",
+      "probe": "fp-semantics/denormals-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.fast_math_intrinsics",
+      "probe": "fp-semantics/fast-expf-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "ulp:2",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.fast_math_intrinsics",
+      "probe": "fp-semantics/fast-fdividef-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "ulp:2",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.fast_math_intrinsics",
+      "probe": "fp-semantics/fast-sinf-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "abs:3.9e-7",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.fma_contraction_default",
+      "probe": "fp-semantics/fma-contraction-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.fp64_emulation_presence",
+      "probe": "fp-semantics/fp64-emulation-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.half_bf16_conversions",
+      "probe": "fp-semantics/half-bf16-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "fp-semantics.rounding_mode_intrinsics",
+      "probe": "fp-semantics/rounding-modes-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "launch-geometry.blockDim_gridDim_3d",
+      "probe": "launch-geometry/dim3-3d-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "launch-geometry.dynamic_shared_size_param",
+      "probe": "launch-geometry/dynamic-shared-size-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "launch-geometry.launch_bounds_large_grid",
+      "probe": "launch-geometry/large-grid-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "launch-geometry.threadIdx_blockIdx_mapping",
+      "probe": "launch-geometry/thread-block-index-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "launch-geometry.zero_size_launch",
+      "probe": "launch-geometry/zero-size-launch-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "limits-refusals.cooperative_groups_grid_sync",
+      "probe": "limits-refusals/cooperative-grid-sync-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "limits-refusals.dynamic_parallelism",
+      "probe": "limits-refusals/dynamic-parallelism-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "limits-refusals.unsupported_intrinsic_diagnostic",
+      "probe": "limits-refusals/inline-ptx-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "limits-refusals.oversized_shared_request",
+      "probe": "limits-refusals/oversized-shared-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "limits-refusals.texture_surface_refs",
+      "probe": "limits-refusals/texture-object-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "shared-memory-barriers.dynamic_shared_extern",
+      "probe": "shared-memory-barriers/dynamic-shared-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "shared-memory-barriers.shared_limit_32kb_boundary",
+      "probe": "shared-memory-barriers/shared-32kb-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "shared-memory-barriers.static_shared_array",
+      "probe": "shared-memory-barriers/static-shared-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "shared-memory-barriers.syncthreads_count_and_or",
+      "probe": "shared-memory-barriers/syncthreads-count-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "shared-memory-barriers.syncthreads_reduction",
+      "probe": "shared-memory-barriers/syncthreads-reduction-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "streams-events.async_memcpy_overlap",
+      "probe": "streams-events/async-memcpy-overlap-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "streams-events.default_stream_sync",
+      "probe": "streams-events/default-stream-sync-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "streams-events.event_elapsed_time",
+      "probe": "streams-events/event-timing-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "streams-events.stream_ordering",
+      "probe": "streams-events/stream-ordering-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "warp-primitives.ballot_any_all",
+      "probe": "warp-primitives/ballot-any-all-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "warp-primitives.match_any_sync",
+      "probe": "warp-primitives/match-any-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "warp-primitives.lane_mask_partial_warp",
+      "probe": "warp-primitives/partial-warp-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "warp-primitives.shfl_sync_variants",
+      "probe": "warp-primitives/shfl-variants-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "warp-primitives.shfl_xor_width",
+      "probe": "warp-primitives/shfl-xor-width-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    },
+    {
+      "feature": "warp-primitives.warp_reduce_add",
+      "probe": "warp-primitives/warp-reduce-add-001",
+      "class": "refused-with-diagnostic",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compile: [MVCC] error: no clang++ from LLVM 23 with NVPTX support found; `brew install llvm@23` or set MVCC_CLANG to an absolute path"
+    }
+  ]
+}
