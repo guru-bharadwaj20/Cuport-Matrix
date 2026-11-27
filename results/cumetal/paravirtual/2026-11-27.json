@@ -1,0 +1,451 @@
+{
+  "schema": 1,
+  "tool": {
+    "id": "cumetal",
+    "version": "v0.8.0",
+    "commit": "6651796af080ee9d869dddcd888ee158450e6a68"
+  },
+  "hardware": {
+    "id": "paravirtual",
+    "macos": "27.0.1 (26A434)",
+    "profiler": "Metal device: Apple Paravirtual device"
+  },
+  "date": "2026-11-27",
+  "runner": {
+    "command": "python -m cuport run --tool cumetal --hardware paravirtual --jobs 3 --gpu-jobs 2 --force",
+    "duration_s": 2.5,
+    "config": {
+      "jobs": 3,
+      "gpu_jobs": 2,
+      "probe_filter": [],
+      "probes": 42,
+      "seed": "per probe: x0 = FNV-1a 64 of the probe id; LCG and draw rule in matrix/schema.md",
+      "python": "3.13.17",
+      "tool_detail": "/Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc",
+      "repo_commit": "cecd4a3c9ad15df2c125608b49394de23bef8df8",
+      "repo_dirty": false
+    }
+  },
+  "cells": [
+    {
+      "feature": "atomics.atomic_64bit",
+      "probe": "atomics/atomic-64bit-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2239]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "atomics.atomicAdd_int_float",
+      "probe": "atomics/atomic-add-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2237]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "atomics.atomicCAS_loop",
+      "probe": "atomics/cas-loop-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2238]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "atomics.atomicMin_Max_unsigned",
+      "probe": "atomics/min-max-unsigned-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2241]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "atomics.shared_atomic_contention",
+      "probe": "atomics/shared-contention-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2244]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "device-services.device_assert",
+      "probe": "device-services/assert-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2249]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "device-services.clock64_monotonic",
+      "probe": "device-services/clock64-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2247]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "device-services.device_malloc_free",
+      "probe": "device-services/malloc-free-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2248]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "device-services.device_printf",
+      "probe": "device-services/printf-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2251]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.denormal_handling",
+      "probe": "fp-semantics/denormals-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2250]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.fast_math_intrinsics",
+      "probe": "fp-semantics/fast-expf-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "ulp:2",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2252]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.fast_math_intrinsics",
+      "probe": "fp-semantics/fast-fdividef-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "ulp:2",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2253]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.fast_math_intrinsics",
+      "probe": "fp-semantics/fast-sinf-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "abs:3.9e-7",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2254]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.fma_contraction_default",
+      "probe": "fp-semantics/fma-contraction-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2255]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.fp64_emulation_presence",
+      "probe": "fp-semantics/fp64-emulation-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2256]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.half_bf16_conversions",
+      "probe": "fp-semantics/half-bf16-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2257]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "fp-semantics.rounding_mode_intrinsics",
+      "probe": "fp-semantics/rounding-modes-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2258]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "launch-geometry.blockDim_gridDim_3d",
+      "probe": "launch-geometry/dim3-3d-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2259]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "launch-geometry.dynamic_shared_size_param",
+      "probe": "launch-geometry/dynamic-shared-size-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2260]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "launch-geometry.launch_bounds_large_grid",
+      "probe": "launch-geometry/large-grid-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2261]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "launch-geometry.threadIdx_blockIdx_mapping",
+      "probe": "launch-geometry/thread-block-index-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2262]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "launch-geometry.zero_size_launch",
+      "probe": "launch-geometry/zero-size-launch-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2263]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "limits-refusals.cooperative_groups_grid_sync",
+      "probe": "limits-refusals/cooperative-grid-sync-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2264]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "limits-refusals.dynamic_parallelism",
+      "probe": "limits-refusals/dynamic-parallelism-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2265]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "limits-refusals.unsupported_intrinsic_diagnostic",
+      "probe": "limits-refusals/inline-ptx-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2267]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "limits-refusals.oversized_shared_request",
+      "probe": "limits-refusals/oversized-shared-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2266]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "limits-refusals.texture_surface_refs",
+      "probe": "limits-refusals/texture-object-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2268]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "shared-memory-barriers.dynamic_shared_extern",
+      "probe": "shared-memory-barriers/dynamic-shared-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2269]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "shared-memory-barriers.shared_limit_32kb_boundary",
+      "probe": "shared-memory-barriers/shared-32kb-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2271]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "shared-memory-barriers.static_shared_array",
+      "probe": "shared-memory-barriers/static-shared-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2272]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "shared-memory-barriers.syncthreads_count_and_or",
+      "probe": "shared-memory-barriers/syncthreads-count-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2273]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "shared-memory-barriers.syncthreads_reduction",
+      "probe": "shared-memory-barriers/syncthreads-reduction-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2274]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "streams-events.async_memcpy_overlap",
+      "probe": "streams-events/async-memcpy-overlap-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2275]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "streams-events.default_stream_sync",
+      "probe": "streams-events/default-stream-sync-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2277]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "streams-events.event_elapsed_time",
+      "probe": "streams-events/event-timing-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2276]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "streams-events.stream_ordering",
+      "probe": "streams-events/stream-ordering-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2278]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "warp-primitives.ballot_any_all",
+      "probe": "warp-primitives/ballot-any-all-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2279]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "warp-primitives.match_any_sync",
+      "probe": "warp-primitives/match-any-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2280]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "warp-primitives.lane_mask_partial_warp",
+      "probe": "warp-primitives/partial-warp-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2281]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "warp-primitives.shfl_sync_variants",
+      "probe": "warp-primitives/shfl-variants-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2282]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "warp-primitives.shfl_xor_width",
+      "probe": "warp-primitives/shfl-xor-width-001",
+      "class": "crash-hang",
+      "oracle": "spec",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2283]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    },
+    {
+      "feature": "warp-primitives.warp_reduce_add",
+      "probe": "warp-primitives/warp-reduce-add-001",
+      "class": "crash-hang",
+      "oracle": "cpu-reference",
+      "tolerance": "bit-exact",
+      "evidence": "[reproduced]",
+      "upstream": null,
+      "notes": "compiler killed by signal 6: dyld[2284]: Library not loaded: /opt/homebrew/opt/z3/lib/libz3.5.3.dylib | Referenced from: <A9429A26-6FDB-3076-B14B-A911CB33E165> /Users/runner/.local/cuport-tools/cumetal-v0.8.0/bin/cumetalc | Reason: tried: '/opt/homebrew/opt/z3/lib/libz3.5.3.dylib' (no such file), '/System/Volumes/Preboot/Crypte"
+    }
+  ]
+}
